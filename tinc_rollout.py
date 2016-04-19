@@ -316,8 +316,7 @@ class Add(TincRollout):
                         ## file protects against malicious tar files
                         ## with absolute paths in them.
                         contents = TAR.extractfile(member).read()
-                        log.info("Adding %s from tar" % member.name)
-                        o.add_peer(member.name, contents)
+                        o.add_peer(member.name.replace("hosts/", "", 1), contents)
                         
     def add_connect_to(o):
         """Look at hosts in hosts dir, add any that have addresses to tinc.conf.
