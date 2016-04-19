@@ -316,6 +316,7 @@ class Add(TincRollout):
                         ## file protects against malicious tar files
                         ## with absolute paths in them.
                         contents = TAR.extractfile(member).read()
+                        log.info("Adding %s from tar" % member.name)
                         o.add_peer(member.name, contents)
                         
     def add_connect_to(o):
